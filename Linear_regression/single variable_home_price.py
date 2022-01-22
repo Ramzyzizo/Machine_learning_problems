@@ -1,4 +1,4 @@
-#lesson 1
+#lesson single variable
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
