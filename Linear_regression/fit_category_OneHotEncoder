@@ -1,0 +1,16 @@
+import pandas as pd
+from sklearn.compose import ColumnTransformer 
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+df =pd.read_csv("categ.csv")
+x=df.iloc[:,:].values       #to be as array
+
+labelencoder_x=LabelEncoder()
+
+x[:,0]=labelencoder_x.fit_transform(x[:,0])     #transform first column to numerical values
+
+ohe=OneHotEncoder()
+ct=ColumnTransformer(transformers=[('abc',ohe,[0])],remainder='passthrough')    #generate code acdording column [0]
+
+y=ct.fit_transform(x)       #adding codes to our data
+y=pd.DataFrame(y)
